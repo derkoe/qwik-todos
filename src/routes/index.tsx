@@ -1,18 +1,30 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, useTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import {
   Form,
   globalAction$,
+  Link,
   routeLoader$,
   z,
   zod$,
 } from "@builder.io/qwik-city";
 import TodoItem from "~/components/todo-item/todo-item";
 import type { Todo } from "~/model/todo";
-import { addTodo, loadTodos } from "~/model/todo-service";
+import {
+  addTodo,
+  clearCompletedTodos,
+  loadItemsLeft,
+  loadTodos,
+  toggleAllTodos,
+} from "~/model/todo-service";
 
-export const useTodos = routeLoader$(() => {
-  return loadTodos();
+export const useTodos = routeLoader$(async ({ query }) => {
+  const qf = query.get("f");
+  return loadTodos(qf as any);
+});
+
+export const useItemsLeft = routeLoader$(async () => {
+  return loadItemsLeft();
 });
 
 export const useAddTodo = globalAction$(
@@ -27,9 +39,31 @@ export const useAddTodo = globalAction$(
   })
 );
 
+export const useToggleAll = globalAction$(() => {
+  toggleAllTodos();
+});
+
+export const useClearCompletedTodos = globalAction$(() =>
+  clearCompletedTodos()
+);
+
 export default component$(() => {
   const todos = useTodos();
+  const itemsLeft = useItemsLeft();
   const addTodoAction = useAddTodo();
+  const toggleAll = useToggleAll();
+  const filter = useSignal();
+  const clearCompletedTodos = useClearCompletedTodos();
+  const newTodoField = useSignal<HTMLInputElement>();
+
+  // clear new todo input after submit
+  useTask$(({ track }) => {
+    track(() => addTodoAction.isRunning);
+    if (newTodoField.value) {
+      newTodoField.value.value = "";
+    }
+  });
+
   return (
     <>
       {addTodoAction.value?.fieldErrors?.title && (
@@ -43,37 +77,74 @@ export default component$(() => {
             name="title"
             placeholder="What needs to be done?"
             autoFocus
+            ref={newTodoField}
           />
         </Form>
       </header>
       <section class="main">
-        <form
-          action="/todos/toggle-all"
-          method="POST"
-          hx-post="/todos/toggle-all"
-          hx-select="#todo-list"
-          hx-target="#todo-list"
-          hx-swap="outerHTML"
-        >
+        <Form action={toggleAll}>
           <button type="submit" id="toggle-all" class="toggle-all"></button>
           <label for="toggle-all">Mark all as complete</label>
-        </form>
+        </Form>
         <ul class="todo-list" id="todo-list">
           {todos.value.map((todo) => (
             <TodoItem key={todo.id} todo={todo}></TodoItem>
           ))}
         </ul>
       </section>
+      {todos.value && (
+        <footer class="footer">
+          <span class="todo-count">
+            <strong>{itemsLeft.value}</strong>{" "}
+            {" item" +
+              (itemsLeft.value > 1 || itemsLeft.value === 0 ? "s " : " ")}
+            left
+          </span>
+          <ul class="filters">
+            <li>
+              <Link class={{ selected: filter.value === "all" }} href="/">
+                All
+              </Link>
+            </li>
+            <li>
+              <Link
+                class={{ selected: filter.value === "active" }}
+                href="/?f=active"
+              >
+                Active
+              </Link>
+            </li>
+            <li>
+              <Link
+                class={{ selected: filter.value === "completed" }}
+                href="/?f=completed"
+              >
+                Completed
+              </Link>
+            </li>
+          </ul>
+          {todos.value.some((t) => t.completed) && (
+            <Form action={clearCompletedTodos}>
+              <button class="clear-completed" type="submit">
+                Clear completed
+              </button>
+            </Form>
+          )}
+        </footer>
+      )}
     </>
   );
 });
 
-export const head: DocumentHead = {
-  title: "Welcome to Qwik",
-  meta: [
-    {
-      name: "description",
-      content: "Qwik site description",
-    },
-  ],
+export const head: DocumentHead = ({ resolveValue }) => {
+  const todos = resolveValue(useTodos);
+  return {
+    title: `Qwik Todos (${todos.filter((todo) => !todo.completed).length})`,
+    meta: [
+      {
+        name: "description",
+        content: "A simple Todo app in Qwik.",
+      },
+    ],
+  };
 };
