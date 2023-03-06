@@ -10,26 +10,20 @@ import {
 } from "@builder.io/qwik-city";
 import TodoItem from "~/components/todo-item/todo-item";
 import type { Todo } from "~/model/todo";
-import {
-  addTodo,
-  clearCompletedTodos,
-  loadItemsLeft,
-  loadTodos,
-  toggleAllTodos,
-} from "~/model/todo-service";
+import { getTodoService } from "~/model/todo-service";
 
-export const useTodos = routeLoader$(async ({ query }) => {
+export const useTodos = routeLoader$(async ({ query, env }) => {
   const qf = query.get("f");
-  return loadTodos(qf as any);
+  return getTodoService(env).loadTodos(qf as any);
 });
 
-export const useItemsLeft = routeLoader$(async () => {
-  return loadItemsLeft();
+export const useItemsLeft = routeLoader$(async ({ env }) => {
+  return getTodoService(env).loadItemsLeft();
 });
 
 export const useAddTodo = globalAction$(
-  (todo: Partial<Todo>) => {
-    addTodo(todo.title!);
+  (todo: Partial<Todo>, { env }) => {
+    getTodoService(env).addTodo(todo.title!);
     return {
       success: true,
     };
@@ -39,12 +33,12 @@ export const useAddTodo = globalAction$(
   })
 );
 
-export const useToggleAll = globalAction$(() => {
-  toggleAllTodos();
+export const useToggleAll = globalAction$((_, { env }) => {
+  getTodoService(env).toggleAllTodos();
 });
 
-export const useClearCompletedTodos = globalAction$(() =>
-  clearCompletedTodos()
+export const useClearCompletedTodos = globalAction$((_, { env }) =>
+  getTodoService(env).clearCompletedTodos()
 );
 
 export default component$(() => {
