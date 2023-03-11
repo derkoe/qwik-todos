@@ -40,3 +40,7 @@ lerna-debug.log*
 # Cloudflare
 functions/**/*.js
 .wrangler/
+
+# Azure
+/azure-functions/**
+!/azure-functions/host.json
