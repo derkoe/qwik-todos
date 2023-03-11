@@ -1,5 +1,5 @@
 import type { Todo } from "./todo";
-import uuidv4 from "./uuidv4";
+import { v4 as uuidv4 } from "uuid";
 
 interface TodoRecord {
   id: string;
