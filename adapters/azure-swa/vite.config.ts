@@ -16,11 +16,7 @@ export default extendConfig(baseConfig, () => {
       },
     },
     ssr: {
-      noExternal: [
-        "@builder.io/qwik",
-        "uuid",
-        "zod"
-      ]
+      noExternal: /.*/,
     },
     plugins: [azureSwaAdapter()],
   };
