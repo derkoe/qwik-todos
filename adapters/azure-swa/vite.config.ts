@@ -17,7 +17,13 @@ export default extendConfig(baseConfig, () => {
     },
     ssr: {
       noExternal: [
+        "@azure/core-auth",
+        "@azure/core-client",
+        "@azure/core-paging",
+        "@azure/core-xml",
+        "@azure/data-tables",
         "@builder.io/qwik",
+        "tslib",
         "uuid",
         "zod"
       ]
