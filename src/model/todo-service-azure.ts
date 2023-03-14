@@ -73,7 +73,7 @@ export function createTodoService(
       );
     },
     async toggleAllTodos() {
-      const completed = (await this.loadItemsLeft()) >= 0;
+      const completed = (await this.loadItemsLeft()) > 0;
       const entities = await tableClient.listEntities<Todo>();
       for await (const entity of entities) {
         entity.completed = completed;
