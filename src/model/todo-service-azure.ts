@@ -39,7 +39,7 @@ export function createTodoService(
         },
       });
       let count = 0;
-      while(!(await entities.next()).done) {
+      while (!(await entities.next()).done) {
         count++;
       }
       return count;

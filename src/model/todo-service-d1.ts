@@ -58,7 +58,10 @@ export const createTodoService = (db: D1Database) => ({
       .bind(id)
       .run();
   },
-  async toggleAllTodos() {},
+  async toggleAllTodos() {
+    const completed = (await this.loadItemsLeft()) >= 0;
+    await db.prepare("UPDATE todos SET completed = ?").bind(completed).run();
+  },
   async clearCompletedTodos() {
     await db.exec("DELETE FROM todos WHERE completed = 1");
   },
