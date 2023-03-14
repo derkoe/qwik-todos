@@ -14,16 +14,16 @@ import { getTodoService } from "~/model/todo-service";
 
 export const useTodos = routeLoader$(async ({ query, env }) => {
   const qf = query.get("f");
-  return getTodoService(env).loadTodos(qf as any);
+  return (await getTodoService(env)).loadTodos(qf as any);
 });
 
 export const useItemsLeft = routeLoader$(async ({ env }) => {
-  return getTodoService(env).loadItemsLeft();
+  return (await getTodoService(env)).loadItemsLeft();
 });
 
 export const useAddTodo = globalAction$(
-  (todo: Partial<Todo>, { env }) => {
-    getTodoService(env).addTodo(todo.title!);
+  async (todo: Partial<Todo>, { env }) => {
+    (await getTodoService(env)).addTodo(todo.title!);
     return {
       success: true,
     };
@@ -33,12 +33,12 @@ export const useAddTodo = globalAction$(
   })
 );
 
-export const useToggleAll = globalAction$((_, { env }) => {
-  getTodoService(env).toggleAllTodos();
-});
+export const useToggleAll = globalAction$(async (_, { env }) =>
+  (await getTodoService(env)).toggleAllTodos()
+);
 
-export const useClearCompletedTodos = globalAction$((_, { env }) =>
-  getTodoService(env).clearCompletedTodos()
+export const useClearCompletedTodos = globalAction$(async (_, { env }) =>
+  (await getTodoService(env)).clearCompletedTodos()
 );
 
 export default component$(() => {

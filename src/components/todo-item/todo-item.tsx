@@ -9,12 +9,13 @@ export interface TodoItemProps {
 }
 
 export const useDeleteTodo = globalAction$(
-  (todo: Partial<Todo>, { env }) => getTodoService(env).deleteTodo(todo.id!),
+  async (todo: Partial<Todo>, { env }) =>
+    (await getTodoService(env)).deleteTodo(todo.id!),
   zod$({ id: z.string().uuid() })
 );
 
 export const useEditTodo = globalAction$(
-  (todo: Todo, { env }) => getTodoService(env).updateTodo(todo),
+  async (todo: Todo, { env }) => (await getTodoService(env)).updateTodo(todo),
   zod$({
     id: z.string().uuid(),
     title: z.string().min(1),
@@ -22,8 +23,8 @@ export const useEditTodo = globalAction$(
 );
 
 export const useToggleTodo = globalAction$(
-  (todo: Partial<Todo>, { env }) =>
-    getTodoService(env).toggleTodo(todo as Todo),
+  async (todo: Partial<Todo>, { env }) =>
+    (await getTodoService(env)).toggleTodo(todo as Todo),
   zod$({ id: z.string().uuid() })
 );
 
