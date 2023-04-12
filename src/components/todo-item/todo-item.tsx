@@ -66,7 +66,7 @@ export default component$(({ todo }: TodoItemProps) => {
           class="toggle"
           type="checkbox"
           checked={todo?.completed}
-          onClick$={async () => await toggleAction.run(todo)}
+          onClick$={async () => await toggleAction.submit(todo)}
         />
         <label>{todo.title}</label>
         <Form action={deleteAction}>
