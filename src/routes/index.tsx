@@ -1,13 +1,7 @@
 import { component$, useSignal, useTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import {
-  Form,
-  globalAction$,
-  Link,
-  routeLoader$,
-  z,
-  zod$,
-} from "@builder.io/qwik-city";
+import { routeAction$ } from "@builder.io/qwik-city";
+import { Form, Link, routeLoader$, z, zod$ } from "@builder.io/qwik-city";
 import TodoItem from "~/components/todo-item/todo-item";
 import type { Todo } from "~/model/todo";
 import { getTodoService } from "~/model/todo-service";
@@ -21,9 +15,10 @@ export const useItemsLeft = routeLoader$(async ({ env }) => {
   return (await getTodoService(env)).loadItemsLeft();
 });
 
-export const useAddTodo = globalAction$(
+export const useAddTodo = routeAction$(
   async (todo: Partial<Todo>, { env }) => {
-    (await getTodoService(env)).addTodo(todo.title!);
+    const todoService = await getTodoService(env);
+    await todoService.addTodo(todo.title!);
     return {
       success: true,
     };
@@ -33,11 +28,11 @@ export const useAddTodo = globalAction$(
   })
 );
 
-export const useToggleAll = globalAction$(async (_, { env }) =>
+export const useToggleAll = routeAction$(async (_, { env }) =>
   (await getTodoService(env)).toggleAllTodos()
 );
 
-export const useClearCompletedTodos = globalAction$(async (_, { env }) =>
+export const useClearCompletedTodos = routeAction$(async (_, { env }) =>
   (await getTodoService(env)).clearCompletedTodos()
 );
 
