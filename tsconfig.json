@@ -22,5 +22,6 @@
     }
   },
   "files": ["./.eslintrc.cjs"],
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/entry.deno.tsx"]
 }

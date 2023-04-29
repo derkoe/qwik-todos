@@ -9,6 +9,7 @@
     "build": "echo 'Run build.azure or build.cloudflare' && false",
     "build.azure": "npm-run-all build.client build.server.azure --parallel lint fmt.check build.types",
     "build.cloudflare": "npm-run-all build.client build.server.cloudflare --parallel lint fmt.check build.types",
+    "build.deno": "npm-run-all build.client build.server.deno --parallel lint fmt.check build.types",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server.azure": "vite build -c adapters/azure-swa/vite.config.ts",
