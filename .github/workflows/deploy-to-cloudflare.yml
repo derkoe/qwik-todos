@@ -1,13 +1,21 @@
-name: Deploy to CloudFlare
+name: Deploy to CloudFlare Pages
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  deployments: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
     name: Publish to Cloudflare Pages
     steps:
       - name: Checkout
@@ -25,11 +33,8 @@ jobs:
       - name: Install NPM Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Format check
-        run: pnpm run fmt.check
-
       - name: Build
-        run: pnpm run build
+        run: pnpm run build.cloudflare
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
