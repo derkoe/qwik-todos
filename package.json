@@ -32,7 +32,7 @@
   "devDependencies": {
     "@azure/functions": "3.5.1",
     "@azure/static-web-apps-cli": "1.1.1",
-    "@builder.io/qwik": "0.107.0",
+    "@builder.io/qwik": "1.0.0",
     "@builder.io/qwik-city": "0.107.0",
     "@cloudflare/workers-types": "4.20230404.0",
     "@types/eslint": "8.37.0",
