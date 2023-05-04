@@ -1,3 +1,6 @@
+import { createTodoService as createD1TodoService } from "./todo-service-d1";
+import { mockTodoService } from "./todo-service-mock";
+
 declare interface EnvGetter {
   get(key: string): string | undefined;
 }
@@ -5,7 +8,7 @@ declare interface EnvGetter {
 export async function getTodoService(env: EnvGetter) {
   const todoDatabase: D1Database | undefined = env.get("TODO_DB") as any;
   if (todoDatabase && typeof todoDatabase.prepare === "function") {
-    return (await import("./todo-service-d1")).createTodoService(todoDatabase);
+    return createD1TodoService(todoDatabase);
   } else if (
     env.get("STORAGE_ACCOUNT_NAME") &&
     env.get("STORAGE_ACCOUNT_KEY")
@@ -17,6 +20,6 @@ export async function getTodoService(env: EnvGetter) {
       storageAccountKey
     );
   } else {
-    return (await import("./todo-service-mock")).mockTodoService;
+    return mockTodoService;
   }
 }
