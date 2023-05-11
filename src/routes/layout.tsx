@@ -17,9 +17,6 @@ export default component$(() => {
         <p>
           Created by <a href="https://derkoe.dev">derkoe</a>
         </p>
-        <p>
-          Part of <a href="http://todomvc.com">TodoMVC</a>
-        </p>
       </footer>
     </>
   );
