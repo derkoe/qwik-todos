@@ -16,11 +16,11 @@ devDependencies:
     specifier: 1.1.2
     version: 1.1.2
   '@builder.io/qwik':
-    specifier: 1.1.0
-    version: 1.1.0(undici@5.22.1)
+    specifier: 1.1.1
+    version: 1.1.1(undici@5.22.1)
   '@builder.io/qwik-city':
-    specifier: 1.1.0
-    version: 1.1.0
+    specifier: 1.1.1
+    version: 1.1.1
   '@cloudflare/workers-types':
     specifier: 4.20230419.0
     version: 4.20230419.0
@@ -46,8 +46,8 @@ devDependencies:
     specifier: 8.40.0
     version: 8.40.0
   eslint-plugin-qwik:
-    specifier: 1.1.0
-    version: 1.1.0(eslint@8.40.0)
+    specifier: 1.1.1
+    version: 1.1.1(eslint@8.40.0)
   node-fetch:
     specifier: 3.3.1
     version: 3.3.1
@@ -337,8 +337,8 @@ packages:
       regenerator-runtime: 0.13.11
     dev: true
 
-  /@builder.io/qwik-city@1.1.0:
-    resolution: {integrity: sha512-1j7ofLpqJxVo1Ao+NsVUdE6IE1U2qLOGhlhzxtnZCmZsK5Oll/2rGyfOgkxxTYk0xlDay8SHkJGpF+pAdDByRg==}
+  /@builder.io/qwik-city@1.1.1:
+    resolution: {integrity: sha512-zF+hCFuugnYAWMG3UGBXo02AZiMpZsTnohCifLM+f0508YHEhWC0QzO2Y1LcyFxo8JVM89uzWNobJMrcF7G3jw==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     dependencies:
       '@mdx-js/mdx': 2.3.0
@@ -350,8 +350,8 @@ packages:
       - supports-color
     dev: true
 
-  /@builder.io/qwik@1.1.0(undici@5.22.1):
-    resolution: {integrity: sha512-A8PlZi8iQcBLYHmpgRClhLKNM35RVn4wL0Ek6ETRKhH+Oh6iRgN0YcHCQO2APmlc1ajAE4tRfFRH2lroi3nREQ==}
+  /@builder.io/qwik@1.1.1(undici@5.22.1):
+    resolution: {integrity: sha512-Bv1Ei2kV4glny3W5zQqpz/zwoxqdCcZ03InLyVY61UbnE2ruAZutH3WfGSNt9CjlK7EXHvPOAw0lb3/xWXAPvQ==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     hasBin: true
     peerDependencies:
@@ -2278,8 +2278,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-plugin-qwik@1.1.0(eslint@8.40.0):
-    resolution: {integrity: sha512-LN7prCRThRkWr1l5SMHbebwQM8N2VhW52ArzfO7bSpSPR5WQHHqhPuwBMRM4gJJCbOArylr5tGB3/J6fLS7uPA==}
+  /eslint-plugin-qwik@1.1.1(eslint@8.40.0):
+    resolution: {integrity: sha512-/8UTrugT0fym9L7gmEzWt30WJCK0bKJFAwaVr/oD4CDfl0s68CDaRWvafTsNHqDSQDVrOtCVW+U51U4zMALKmw==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: '>= 8'
