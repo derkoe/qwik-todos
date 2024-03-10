@@ -14,7 +14,7 @@ export async function getTodoService(env: EnvGetter) {
     const storageAccountKey = env.get("STORAGE_ACCOUNT_KEY")!;
     return (await import("./todo-service-azure")).createTodoService(
       storageAccountName,
-      storageAccountKey
+      storageAccountKey,
     );
   } else {
     return (await import("./todo-service-mock")).mockTodoService;
