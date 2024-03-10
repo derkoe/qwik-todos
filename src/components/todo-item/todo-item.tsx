@@ -11,7 +11,7 @@ export interface TodoItemProps {
 export const useDeleteTodo = globalAction$(
   async (todo: Partial<Todo>, { env }) =>
     (await getTodoService(env)).deleteTodo(todo.id!),
-  zod$({ id: z.string().uuid() })
+  zod$({ id: z.string().uuid() }),
 );
 
 export const useEditTodo = globalAction$(
@@ -19,13 +19,13 @@ export const useEditTodo = globalAction$(
   zod$({
     id: z.string().uuid(),
     title: z.string().min(1),
-  })
+  }),
 );
 
 export const useToggleTodo = globalAction$(
   async (todo: Partial<Todo>, { env }) =>
     (await getTodoService(env)).toggleTodo(todo as Todo),
-  zod$({ id: z.string().uuid() })
+  zod$({ id: z.string().uuid() }),
 );
 
 export default component$(({ todo }: TodoItemProps) => {

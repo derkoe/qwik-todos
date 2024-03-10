@@ -27,11 +27,11 @@ export const createTodoService = (db: D1Database) => ({
       : [];
     return todos;
   },
-  async loadItemsLeft() {
+  async loadItemsLeft(): Promise<number> {
     const result = await db
       .prepare("SELECT COUNT(*) as itemsleft FROM todos WHERE completed <> 1")
-      .first<{ itemsleft: number }>();
-    return result.itemsleft;
+      .first<number>();
+    return result || 0;
   },
   async addTodo(title: string) {
     const newTodo = { id: uuidv4(), title, completed: false };
@@ -53,7 +53,7 @@ export const createTodoService = (db: D1Database) => ({
   async toggleTodo({ id }: Todo) {
     await db
       .prepare(
-        "UPDATE todos SET completed = CASE WHEN completed = 1 THEN 0 ELSE 1 END WHERE id = ?"
+        "UPDATE todos SET completed = CASE WHEN completed = 1 THEN 0 ELSE 1 END WHERE id = ?",
       )
       .bind(id)
       .run();

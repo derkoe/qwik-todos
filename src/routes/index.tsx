@@ -25,15 +25,15 @@ export const useAddTodo = routeAction$(
   },
   zod$({
     title: z.string().min(1),
-  })
+  }),
 );
 
 export const useToggleAll = routeAction$(async (_, { env }) =>
-  (await getTodoService(env)).toggleAllTodos()
+  (await getTodoService(env)).toggleAllTodos(),
 );
 
 export const useClearCompletedTodos = routeAction$(async (_, { env }) =>
-  (await getTodoService(env)).clearCompletedTodos()
+  (await getTodoService(env)).clearCompletedTodos(),
 );
 
 export default component$(() => {

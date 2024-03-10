@@ -4,12 +4,12 @@ import type { Todo } from "./todo";
 
 export function createTodoService(
   storageAccountName: string,
-  storageAccountKey: string
+  storageAccountKey: string,
 ) {
   const tableClient = new TableClient(
     `https://${storageAccountName}.table.core.windows.net`,
     "todos",
-    new AzureNamedKeyCredential(storageAccountName, storageAccountKey)
+    new AzureNamedKeyCredential(storageAccountName, storageAccountKey),
   );
   return {
     async loadTodos(completed: "all" | "active" | "completed") {
@@ -58,7 +58,7 @@ export function createTodoService(
     async updateTodo({ id, title }: Todo) {
       tableClient.updateEntity(
         { partitionKey: "todos", rowKey: id, title },
-        "Merge"
+        "Merge",
       );
     },
     async toggleTodo({ id }: Todo) {
@@ -69,7 +69,7 @@ export function createTodoService(
           rowKey: entity.rowKey!,
           completed: !entity.completed,
         },
-        "Merge"
+        "Merge",
       );
     },
     async toggleAllTodos() {
