@@ -59,7 +59,7 @@ export default [
   ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:qwik/recommended"
+    "plugin:qwik/recommended",
   ),
   {
     plugins: {
