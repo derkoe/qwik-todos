@@ -59,7 +59,7 @@ export default [
   ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:qwik/recommended",
+    "plugin:qwik/recommended"
   ),
   {
     plugins: {
@@ -72,7 +72,6 @@ export default [
       sourceType: "module",
 
       parserOptions: {
-        tsconfigRootDir: "/Users/koc/projects/github.com/derkoe/qwik-todos",
         project: ["./tsconfig.json"],
 
         ecmaFeatures: {
