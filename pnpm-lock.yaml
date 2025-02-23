@@ -52,8 +52,8 @@ importers:
         specifier: 9.21.0
         version: 9.21.0
       eslint-plugin-qwik:
-        specifier: 1.12.1
-        version: 1.12.1(eslint@9.21.0)(typescript@5.7.3)
+        specifier: 2.0.0-alpha.7
+        version: 2.0.0-alpha.7(eslint@9.21.0)(typescript@5.7.3)
       node-fetch:
         specifier: 3.3.2
         version: 3.3.2
@@ -1596,11 +1596,9 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-qwik@1.12.1:
-    resolution: {integrity: sha512-TcRmlddWP1Qk0TcwLcS6Hu7+DYnpiwR+DvsPNqpcqOpModjXgtQ2keBvjCJ0y2Zoe18QPE1FES3HWnrHMhnKig==}
-    engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
-    peerDependencies:
-      eslint: ^8.57.0
+  eslint-plugin-qwik@2.0.0-alpha.7:
+    resolution: {integrity: sha512-2yf8fNPo4E4UiUbCeQU37rGP/IYqThf3BydHX6gOFm5ENN73rGN+6lJQ6OQq3h6K0fCBEZLC2B3aTeY9rYhN/A==}
+    engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
 
   eslint-scope@8.2.0:
     resolution: {integrity: sha512-PHlWUfG6lvPc3yvP5A4PNyBL1W8fkDUccmI21JUu/+GKZBoH/W5u6usENXUrWFRsyoW5ACUjFGgAFQp5gUlb/A==}
@@ -5053,12 +5051,12 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-qwik@1.12.1(eslint@9.21.0)(typescript@5.7.3):
+  eslint-plugin-qwik@2.0.0-alpha.7(eslint@9.21.0)(typescript@5.7.3):
     dependencies:
       '@typescript-eslint/utils': 8.24.1(eslint@9.21.0)(typescript@5.7.3)
-      eslint: 9.21.0
       jsx-ast-utils: 3.3.5
     transitivePeerDependencies:
+      - eslint
       - supports-color
       - typescript
 
