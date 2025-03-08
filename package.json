@@ -42,7 +42,7 @@
     "@typescript-eslint/eslint-plugin": "8.26.0",
     "@typescript-eslint/parser": "8.26.0",
     "eslint": "9.22.0",
-    "eslint-plugin-qwik": "2.0.0-alpha.7",
+    "eslint-plugin-qwik": "2.0.0-alpha.8",
     "node-fetch": "3.3.2",
     "npm-run-all2": "7.0.2",
     "prettier": "3.5.3",
