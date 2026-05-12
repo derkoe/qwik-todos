@@ -44,7 +44,7 @@
     "eslint": "9.39.4",
     "eslint-plugin-qwik": "2.0.0-alpha.7",
     "node-fetch": "3.3.2",
-    "npm-run-all2": "7.0.2",
+    "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",
     "typescript": "5.9.3",
     "undici": "7.24.6",
