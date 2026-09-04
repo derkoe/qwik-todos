@@ -41,7 +41,7 @@
     "@types/uuid": "10.0.0",
     "@typescript-eslint/eslint-plugin": "8.57.2",
     "@typescript-eslint/parser": "8.57.2",
-    "eslint": "9.39.4",
+    "eslint": "10.10.0",
     "eslint-plugin-qwik": "2.0.0-alpha.7",
     "node-fetch": "3.3.2",
     "npm-run-all2": "7.0.2",
