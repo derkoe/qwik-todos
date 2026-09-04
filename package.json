@@ -47,7 +47,7 @@
     "npm-run-all2": "7.0.2",
     "prettier": "3.8.1",
     "typescript": "5.9.3",
-    "undici": "7.24.6",
+    "undici": "8.10.2",
     "vite": "6.4.1",
     "vite-tsconfig-paths": "5.1.4",
     "wrangler": "4.77.0"
