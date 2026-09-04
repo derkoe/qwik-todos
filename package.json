@@ -27,30 +27,30 @@
   },
   "dependencies": {
     "@azure/data-tables": "13.3.2",
-    "uuid": "11.1.0"
+    "uuid": "11.1.1"
   },
   "devDependencies": {
-    "@azure/functions": "4.12.0",
-    "@azure/static-web-apps-cli": "2.0.8",
+    "@azure/functions": "4.16.2",
+    "@azure/static-web-apps-cli": "2.0.10",
     "@builder.io/qwik": "1.12.1",
     "@builder.io/qwik-city": "1.12.1",
-    "@cloudflare/workers-types": "4.20260317.1",
+    "@cloudflare/workers-types": "4.20260702.1",
     "@types/eslint": "9.6.1",
-    "@types/node": "22.19.15",
+    "@types/node": "22.20.1",
     "@types/node-fetch": "2.6.13",
     "@types/uuid": "10.0.0",
-    "@typescript-eslint/eslint-plugin": "8.57.2",
-    "@typescript-eslint/parser": "8.57.2",
-    "eslint": "9.39.4",
+    "@typescript-eslint/eslint-plugin": "8.69.0",
+    "@typescript-eslint/parser": "8.69.0",
+    "eslint": "9.39.5",
     "eslint-plugin-qwik": "2.0.0-alpha.7",
     "node-fetch": "3.3.2",
     "npm-run-all2": "7.0.2",
-    "prettier": "3.8.1",
+    "prettier": "3.9.6",
     "typescript": "5.9.3",
-    "undici": "7.24.6",
-    "vite": "6.4.1",
+    "undici": "7.29.1",
+    "vite": "6.4.3",
     "vite-tsconfig-paths": "5.1.4",
-    "wrangler": "4.77.0"
+    "wrangler": "4.129.0"
   },
   "packageManager": "pnpm@9.15.9"
 }
